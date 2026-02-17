@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Almost There | Roblox Secret</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background: #0a0a0a;
+            color: #eee;
+            font-family: 'Quicksand', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* header */
+        .header {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            padding: 14px;
+            text-align: center;
+            background: #000;
+            border-bottom: 1px solid rgba(80, 80, 80, 0.7);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        /* card */
+        .card {
+            background: #0F0F0FE6;
+            border-radius: 22px;
+            padding: 30px;
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+            border: 1px solid rgba(80, 80, 80, 0.7);
+            box-shadow: 0 0 15px rgba(50, 50, 50, 0.3);
+        }
+
+        @keyframes bounce-small {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        /* icon */
+        .app-icon-wrap {
+            animation: bounce-small 3s ease-in-out infinite;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 18px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 6px;
+        }
+
+        .desc {
+            color: #aaa;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        /* step pill */
+        .step-pill {
+            background: linear-gradient(135deg, #F5AD1E, #F27621);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        /* copy box */
+        .copy-box {
+            background: #141414;
+            border: 2px dashed #F5AD1E;
+            border-radius: 14px;
+            padding: 18px;
+            margin: 15px 0;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .copy-box:active {
+            transform: scale(0.96);
+        }
+
+        .url-text {
+            font-size: 22px;
+            font-weight: 700;
+            color: #F5AD1E;
+        }
+
+        /* browser box */
+        .browser-box {
+            background: #141414;
+            padding: 18px;
+            border-radius: 18px;
+            border: 1px solid rgba(80, 80, 80, 0.7);
+        }
+
+        .footer {
+            margin-top: 22px;
+            font-size: 11px;
+            color: #777;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <div class="app-icon-wrap">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS39mXK2DNOHvwIitdsMhw7OB7pMRbG-KZhWg&s"
+                style="width:100%;height:100%;object-fit:cover;">
+        </div>
+
+        <h1>One More Step</h1>
+        <p class="desc">To Unlock Your Roblox Secret Open This Page In Your Browser First.</p>
+
+        <div>
+            <span class="step-pill">STEP 1 • COPY</span>
+            <p style="font-size:13px;color:#aaa;">Tap below to copy the link</p>
+
+            <div class="copy-box" onclick="copyUrl()">
+                <span class="url-text">scriptxe.xyz</span>
+            </div>
+
+            <p id="copy-status" style="color:#22c55e;font-size:12px;height:16px;"></p>
+        </div>
+
+        <div class="browser-box">
+            <span class="step-pill">STEP 2 • PASTE</span>
+            <p style="font-size:13px;color:#aaa;">Open Chrome, Safari or Brave and paste it</p>
+
+            <div style="display:flex;justify-content:center;gap:18px;margin-top:10px;opacity:0.85;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg"
+                    width="32">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Safari_browser_logo.svg" width="32">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Brave_icon_lionface.png" width="32">
+            </div>
+        </div>
+
+        <div class="footer">ROBLOX SECRET • 2026</div>
+
+    </div>
+
+    <script>
+        function copyUrl() {
+            const url = "scriptxe.xyz";
+            navigator.clipboard.writeText(url).then(() => {
+                document.getElementById("copy-status").textContent = "Copied! Now open your browser.";
+            });
+        }
+    </script>
+
+</body>
+
+</html>
