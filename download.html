@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamelnk - Download</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Exo+2:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Exo 2', sans-serif;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #eee;
+            text-align: center;
+            font-family: 'Exo 2', sans-serif;
+        }
+
+        header {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 15px 20px;
+            background: #000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(80, 80, 80, 0.7);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #ffffff;
+        }
+
+        .logo span {
+            font-weight: bold;
+            font-size: 20px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        #searchBar {
+            font-family: 'Exo 2', sans-serif;
+            padding: 10px 100px;
+            padding-left: 40px;
+            border-radius: 6px;
+            margin-top: 15px;
+            border: 1px solid rgba(80, 80, 80, 0.7);
+            outline: none;
+            font-size: 14px;
+            background: #141414cc;
+            color: #fff;
+            backdrop-filter: blur(5px);
+            transition: 0.3s;
+            background-image: url('https://i.ibb.co/27VDchNc/search.png');
+            background-repeat: no-repeat;
+            background-position: 12px center;
+            background-size: 18px 18px;
+        }
+
+        .breadcrumb {
+            font-size: 0.9rem;
+            color: #aaa;
+            margin: 15px 20px;
+            text-align: left;
+        }
+
+        .breadcrumb a {
+            text-decoration: none;
+            color: #aaa;
+        }
+
+        .breadcrumb span {
+            color: #fff;
+        }
+
+        .game-card {
+            background-color: #0F0F0FE6;
+            margin: 20px 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(50, 50, 50, 0.3);
+            padding: 12px;
+            border: 1px solid rgba(80, 80, 80, 0.7);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .game-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 35px rgba(130, 130, 130, 0.15);
+        }
+
+        .banner {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            display: block;
+        }
+
+        .game-info-box {
+            display: flex;
+            gap: 15px;
+            align-items: left;
+            padding: 20px;
+        }
+
+        .game-info {
+            flex: 1;
+        }
+
+        .game-info p {
+            font-size: 16px;
+            color: #D1D5DB;
+            margin-top: 10px;
+            text-align: left;
+            margin-left: -10px;
+        }
+
+        .game-info h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 19.2px;
+            text-align: left;
+            margin-left: -10px;
+            margin-bottom: 15px;
+        }
+
+        .note {
+            margin-bottom: -5px;
+            margin-top: 5px !important;
+            font-size: 14px !important;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #000000;
+            color: #aaa;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(80, 80, 80, 0.7);
+            margin-top: 40px;
+        }
+
+        .download-btn {
+            font-family: 'Orbitron', sans-serif;
+            display: inline-block;
+            background: linear-gradient(135deg, #F5AD1E, #F27621);
+            border: 1px solid #444444;
+            box-shadow: 0 4px 15px rgba(40, 40, 40, 0.5);
+            color: #ffffff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 12px 64px;
+            margin-bottom: 15px;
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 6px;
+            text-decoration: none;
+            white-space: nowrap;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .download-btn:active {
+            transform: translateY(-3px);
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+        }
+
+        .download {
+            width: 18px !important;
+            height: auto !important;
+            position: relative;
+            right: 5px;
+        }
+
+        .text {
+            margin-top: 15px;
+            font-weight: lighter;
+            font-size: 14px;
+            margin-left: 10px;
+            text-align: left;
+        }
+
+        .title {
+            margin-top: 15px;
+            font-size: 20px;
+            margin-left: 10px;
+            text-align: left;
+        }
+
+        .code-container {
+            background-color: #0F0F0FE6;
+            margin: 20px 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(50, 50, 50, 0.3);
+            padding: 12px;
+            border: 1px solid rgba(80, 80, 80, 0.7);
+            text-align: left;
+            color: #D1D5DB;
+            font-size: 14px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .code-container pre {
+            margin: 0;
+        }
+
+        .code-container code {
+            font-family: monospace;
+        }
+
+        .krnl-logo {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            border-radius: 10px;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo"><span>GAME LNK DOWNLOAD</span></div>
+        <input type="text" id="searchBar" placeholder="Search for scripts...">
+    </header>
+
+    <div class="breadcrumb">
+        <a href="#">Home</a> &gt;
+        <a href="#">Games</a> &gt;
+        <span>Download</span>
+    </div>
+
+    <div class="game-card">
+        <img class="banner krnl-logo"
+            src="https://play-lh.googleusercontent.com/UOJ0N42bDu2lUbZIx4n9UCnHtnY5IEyG1jOLXByCbbCvi6wammxVR4XC9endWA5rAA=w526-h296-rw"
+            alt="Null's">
+        <div class="game-info-box">
+            <div class="game-info">
+                <h3>Null's Royal</h3>
+                <p class="note">▶ Infinite Gems, Gold & Free Chests</p>
+                <p class="note">▶ All Cards, Stickers & Emotes Unlocked</p>
+                <p class="note">▶ Private Server with Multiplayer Battles</p>
+            </div>
+        </div>
+        <a href="https://dnull.xyz/latest_cr" target="_blank" class="download-btn">
+            <img src="https://i.ibb.co/JjnGSGMN/downloads-2.png" class="download" alt="downloads">
+            Download Now</a>
+    </div>
+
+    <div class="game-card">
+        <img class="banner krnl-logo" src="https://i.ytimg.com/vi/hU-muydt-_8/maxresdefault.jpg" alt="FNF">
+        <div class="game-info-box">
+            <div class="game-info">
+                <h3>FNF Mods</h3>
+                <p class="note">▶ New Characters, Songs & Weeks</p>
+                <p class="note">▶ Hard Modes & Custom Charts</p>
+                <p class="note">▶ Updated Animations & Visuals</p>
+            </div>
+        </div>
+        <a href="https://gamebanana.com/mods/cats/38080" target="_blank" class="download-btn">
+            <img src="https://i.ibb.co/JjnGSGMN/downloads-2.png" class="download" alt="downloads">
+            Download Now</a>
+    </div>
+
+    <div class="game-card">
+        <img class="banner krnl-logo" src="https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1240/b_white/f_auto/q_auto/store/software/switch/70010000020840/60eebc8f7133f685eddbffbe43c8da617ba0a5d699f2008f9c31c6119d1792af" alt="FNF">
+        <div class="game-info-box">
+            <div class="game-info">
+                <h3>Hollow Knight: Silksong</h3>
+                <p class="note">▶ Play as Hornet with New Abilities</p>
+                <p class="note">▶ Huge New World to Explore</p>
+                <p class="note">▶ Challenging Boss Fights</p>
+            </div>
+        </div>
+        <a href="https://apkvision.org/games/action/hollow-knight-silksong-130787/" target="_blank" class="download-btn">
+            <img src="https://i.ibb.co/JjnGSGMN/downloads-2.png" class="download" alt="downloads">
+            Download Now</a>
+    </div>
+
+    <footer>
+        © 2025 ScriptXE. All rights reserved.
+    </footer>
+
+    <script>
+        const searchBar = document.getElementById("searchBar");
+
+        searchBar.addEventListener("input", function () {
+            const query = searchBar.value.toLowerCase();
+            const headings = document.querySelectorAll("h3");
+
+            for (let h of headings) {
+                if (query !== "" && h.textContent.toLowerCase().startsWith(query)) {
+                    h.scrollIntoView({ behavior: "smooth", block: "center" });
+                    break;
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
