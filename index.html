@@ -25,6 +25,54 @@
             font-family: 'Exo 2', sans-serif;
         }
 
+        @media (min-width: 768px) {
+            body {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            header {
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 15px 40px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            #searchBar {
+                margin-top: 0;
+                width: 320px;
+                padding: 10px 20px 10px 40px;
+            }
+
+            .breadcrumb {
+                margin: 20px 30px;
+            }
+
+            .cards-container {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+                padding: 0 20px 20px;
+            }
+
+            .game-card {
+                margin: 0;
+            }
+
+            .download-btn {
+                width: 100%;
+                box-sizing: border-box;
+                padding: 12px 20px;
+            }
+        }
+
+        @media (min-width: 1100px) {
+            .cards-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
         header {
             display: flex;
             justify-content: center;
@@ -676,28 +724,6 @@
                         document.body.style.overflow = 'auto';
                     }
                 })();
-            </script>
-
-            <script>
-                if (!/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)) {
-                    document.body.innerHTML = `
-                <div style="
-                    background:#0f1724;
-                    color:#fff;
-                    display:flex;
-                    align-items:center;
-                    justify-content:center;
-                    height:100vh;
-                    text-align:center;
-                    font-family:sans-serif;
-                    padding:20px;">
-                    <div>
-                    <h1>📱 Please open this site on your phone</h1>
-                    <p>This site is only available on mobile devices.</p>
-                    </div>
-                </div>`;
-                    document.title = "Open on your phone";
-                }
             </script>
 
             <script>
